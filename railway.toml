@@ -1,5 +1,8 @@
 [build]
 builder = "NIXPACKS"
-installCommand = "yarn install"
 buildCommand = "yarn build"
 startCommand = "yarn start"
+
+[build.nixpacksPlan.phases.install]
+dependsOn = ["setup"]
+cmds = ["cd ../.. && yarn"]
