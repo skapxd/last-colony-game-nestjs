@@ -6,12 +6,6 @@ import { ServeStaticModule } from '@nestjs/serve-static';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { CustomMongooseModule } from './modules/mongoose/mongoose.module';
-import { AudioModule } from './modules/queue/queue.module';
-import { ReactModule } from './modules/react/react.module';
-import { SseModule } from './modules/sse/sse.module';
-import { TypeormModule } from './modules/typeorm/typeorm.module';
-import { WorkerModule } from './modules/worker/worker.module';
 
 @Module({
   imports: [
@@ -22,12 +16,6 @@ import { WorkerModule } from './modules/worker/worker.module';
       global: true,
       verboseMemoryLeak: true,
     }),
-    SseModule,
-    WorkerModule,
-    AudioModule,
-    CustomMongooseModule,
-    TypeormModule,
-    ReactModule,
   ],
   controllers: [AppController],
   providers: [AppService],
