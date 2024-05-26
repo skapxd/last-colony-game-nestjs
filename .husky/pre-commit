@@ -1,8 +1,8 @@
-pnpm generate-process-env
+yarn generate-process-env
 git add process.d.ts
 
-pnpm generate-example-env
+yarn generate-example-env
 git add .example.env
 
-pnpm lint
-pnpm build 
+yarn lint
+yarn build 
