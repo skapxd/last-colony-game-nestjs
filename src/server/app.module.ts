@@ -9,7 +9,9 @@ import { AppService } from './app.service';
 
 @Module({
   imports: [
-    ServeStaticModule.forRoot({ rootPath: join(process.cwd(), 'public') }),
+    ServeStaticModule.forRoot({
+      rootPath: join(process.cwd(), 'public'),
+    }),
     EventEmitterModule.forRoot({
       delimiter: '.',
       wildcard: true,

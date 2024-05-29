@@ -1,11 +1,13 @@
 import 'dotenv/config';
 
+import { resolve } from 'node:path';
+
 import swc from 'unplugin-swc';
 import { defineConfig } from 'vitest/config';
-import tsConfig from "./tsconfig.json"
-import { resolve } from 'path';
 
-const testResultDir = resolve(__dirname, 'test-reporter'); 
+import tsConfig from './tsconfig.json';
+
+const testResultDir = resolve(__dirname, 'test-reporter');
 
 export default defineConfig({
   test: {
@@ -17,13 +19,8 @@ export default defineConfig({
       provider: 'v8',
       reporter: ['html'],
       reportsDirectory: resolve(testResultDir, 'coverage'),
-      include: [
-        'src/server/**/*.ts',
-      ],
-      exclude: [
-        '**/**.module.ts',
-        '**/main.ts',
-      ],
+      include: ['src/server/**/*.ts'],
+      exclude: ['**/**.module.ts', '**/main.ts'],
       thresholds: {
         branches: 90,
         functions: 90,
@@ -32,15 +29,12 @@ export default defineConfig({
       },
     },
     outputFile: resolve(testResultDir, 'index.html'),
-    reporters: [
-      'default',
-      "html",
-    ],
+    reporters: ['default', 'html'],
     globals: true,
     root: './',
     alias: {
       // @ts-ignore
-      '#/': new URL(tsConfig.compilerOptions.baseUrl, import.meta.url).pathname
+      '#/': new URL(tsConfig.compilerOptions.baseUrl, import.meta.url).pathname,
     },
   },
   plugins: [
